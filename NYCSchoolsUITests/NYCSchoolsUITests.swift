@@ -26,6 +26,19 @@ final class NYCSchoolsUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        let collectionViewsQuery = XCUIApplication().collectionViews
+        collectionViewsQuery.cells.otherElements.containing(.staticText, identifier:"Frank Sinatra School of the Arts High School").element.tap()
+        collectionViewsQuery/*@START_MENU_TOKEN@*/.staticTexts["9-12"]/*[[".cells.staticTexts[\"9-12\"]",".staticTexts[\"9-12\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+        
+        let element = collectionViewsQuery.children(matching: .cell).element(boundBy: 0).children(matching: .other).element(boundBy: 0)
+        element.tap()
+        
+        let element2 = collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element(boundBy: 0)
+        element2.swipeUp()
+        element2.swipeUp()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 2).children(matching: .other).element(boundBy: 0).tap()
+        element.swipeDown()
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
